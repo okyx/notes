@@ -21,7 +21,6 @@ class NotesService {
       text: 'INSERT INTO NOTES VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       values: [id, title, body, tags, createdAt, updatedAt, owner],
     };
-    console.log(query);
     const result = await this._pool.query(query);
     if (!result.rows[0].id) {
       throw new InvariantError('Catatan gagal ditambahkan');
